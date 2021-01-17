@@ -21,6 +21,9 @@ export default function App() {
             <li>
               <Link to="/users">Users</Link>
             </li>
+            <li>
+              <Link to="/users">Users Again</Link>
+            </li>
           </ul>
         </nav>
 
