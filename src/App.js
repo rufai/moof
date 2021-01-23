@@ -36,7 +36,7 @@ export default function App(props) {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/about">
-          <About task={props.tasks} />
+            <About task={props.tasks} addTask={addTask}/>
           </Route>
           <Route path="/users">
             <Users />
@@ -60,7 +60,7 @@ function About(props) {
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
-      <Form />
+      <Form appAddTask={props.addTask} />
     
       <div className="filters btn-group stack-exception">
         <FilterButton />
@@ -83,4 +83,8 @@ function About(props) {
 
 function Users() {
   return <h2>Users</h2>;
+}
+
+function addTask(name){
+  alert(name)
 }
