@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import {nanoid} from 'nanoid';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,7 +11,51 @@ import Todo from './components/Todo'
 import Form from './components/Form'
 import FilterButton from './components/FilterButton'
 
+const FILTER_MAP = {
+  ALL: () => true,
+  Active: task => !task.completed,
+  Completed: task => task.completed
+}
+
+const FILTER_NAMES = Object.keys(FILTER_MAP)
+
 export default function App(props) {
+  
+  const [tasks, setTasks] = useState(props.tasks);
+  
+  function addTask(name){
+    const newTask = { id: "task-" + nanoid(), name: name, completed: false };
+    alert(name + " inside addTask")
+    setTasks([...tasks, newTask])
+  }
+
+  function toggleTaskCompleted(id) {
+    // console.log(tasks[0])
+    const updatedTasks = tasks.map((task) => {
+      if (id === task.id) {
+        return {...task, completed: !task.completed}
+      }
+      return task
+    })
+    setTasks(updatedTasks)
+  }
+
+  function deleteTask(id){
+    console.log(id)
+    const remainingTasks = tasks.filter((task) => id !== task.id)
+    setTasks(remainingTasks)
+  }
+
+  function editTask(id, newName) {
+    const updatedTasks = tasks.map((task) => {
+      if (id === task.id) {
+        return {...task, name: newName}
+      }
+      return task
+    })
+    setTasks(updatedTasks)
+
+  }
 
   return (
     <Router>
@@ -36,7 +81,7 @@ export default function App(props) {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/about">
-            <About task={props.tasks} addTask={addTask}/>
+            <About task={tasks} addTask={addTask} toggleTaskCompleted={toggleTaskCompleted} deleteTask={deleteTask} editTask={editTask}/>
           </Route>
           <Route path="/users">
             <Users />
@@ -55,7 +100,34 @@ function Home() {
 }
 
 function About(props) {
-  const taskList = props.task.map((task) => <Todo id={task.id} name={task.name} completed={task.completed} key={task.id}/>)
+
+  const [filter, setFilter] = useState("All");
+
+  const taskList = props.task.map((task) => 
+    <Todo 
+      id={task.id} 
+      name={task.name} 
+      completed={task.completed} 
+      key={task.id} 
+      toggleTaskCompleted={props.toggleTaskCompleted}
+      deleteTask={props.deleteTask}
+      editTask={props.editTask}
+      />
+  )
+
+  const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task'
+  const headingText = `${taskList.length} ${tasksNoun} remaining`
+
+  // const filterList = FILTER_MAP.map( name => (
+  //   <FilterButton key={name} name={name} />
+  // ))
+  const filterList = FILTER_NAMES.map(name => (
+    <FilterButton 
+      key={name} 
+      name={name}
+      isPressed={name === filter}
+      setFilter={setFilter} />
+  ));
 
   return (
     <div className="todoapp stack-large">
@@ -63,13 +135,9 @@ function About(props) {
       <Form appAddTask={props.addTask} />
     
       <div className="filters btn-group stack-exception">
-        <FilterButton />
-        <FilterButton />
-        <FilterButton />
+       {filterList}
       </div>
-      <h2 id="list-heading">
-        3 tasks remaining
-      </h2>
+      <h2 id="list-heading">{headingText}</h2>
       <ul
         // role="list"
         className="todo-list stack-large stack-exchange"
@@ -85,6 +153,3 @@ function Users() {
   return <h2>Users</h2>;
 }
 
-function addTask(name){
-  alert(name)
-}
