@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/moof/static/css/main.f247bc25.chunk.css",
+    "main.js": "/moof/static/js/main.9dad6d08.chunk.js",
+    "main.js.map": "/moof/static/js/main.9dad6d08.chunk.js.map",
+    "runtime-main.js": "/moof/static/js/runtime-main.7ef703d4.js",
+    "runtime-main.js.map": "/moof/static/js/runtime-main.7ef703d4.js.map",
+    "static/js/2.538e9ce5.chunk.js": "/moof/static/js/2.538e9ce5.chunk.js",
+    "static/js/2.538e9ce5.chunk.js.map": "/moof/static/js/2.538e9ce5.chunk.js.map",
+    "static/js/3.7d581bba.chunk.js": "/moof/static/js/3.7d581bba.chunk.js",
+    "static/js/3.7d581bba.chunk.js.map": "/moof/static/js/3.7d581bba.chunk.js.map",
+    "index.html": "/moof/index.html",
+    "static/css/main.f247bc25.chunk.css.map": "/moof/static/css/main.f247bc25.chunk.css.map",
+    "static/js/2.538e9ce5.chunk.js.LICENSE.txt": "/moof/static/js/2.538e9ce5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7ef703d4.js",
+    "static/js/2.538e9ce5.chunk.js",
+    "static/css/main.f247bc25.chunk.css",
+    "static/js/main.9dad6d08.chunk.js"
+  ]
+}
