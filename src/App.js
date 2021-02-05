@@ -1,16 +1,17 @@
-import React, {useState} from "react";
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 
-import Todo from './components/Todo'
-import Form from './components/Form'
-import FilterButton from './components/FilterButton'
-import Tabs from './components/tabs'
+
+  Link, Route, Switch
+} from "react-router-dom";
+import Dasboard from './components/Dashboard';
+import FilterButton from './components/FilterButton';
+import Form from './components/Form';
+import Tabs from './components/tabs';
+import Todo from './components/Todo';
+
 
 const FILTER_MAP = {
   ALL: () => true,
@@ -64,13 +65,13 @@ export default function App(props) {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Tabs</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/TodoList">TodoMatic</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/modal">Modal</Link>
             </li>
             <li>
               <Link to="/users">Users Again</Link>
@@ -81,11 +82,11 @@ export default function App(props) {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
+          <Route path="/TodoList">
             <About task={tasks} addTask={addTask} toggleTaskCompleted={toggleTaskCompleted} deleteTask={deleteTask} editTask={editTask}/>
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/modal">
+            <Dasboard />
           </Route>
           <Route path="/">
           <div>

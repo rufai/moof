@@ -11,6 +11,7 @@ const Tabs = (props) => {
     const [activeTab, setActiveTab] = useState(children[0].props.label)
 
     const onClickTabItem = (tab) => {
+        console.log({tab})
         setActiveTab(tab)
     }
     
@@ -25,7 +26,8 @@ const Tabs = (props) => {
                                 activeTab={activeTab}
                                 key={label}
                                 label={label}
-                                onClick={onClickTabItem} />
+                                onClick={onClickTabItem}
+                             />
                         )
                     })}
                 </ol>
