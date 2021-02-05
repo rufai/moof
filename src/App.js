@@ -11,6 +11,7 @@ import FilterButton from './components/FilterButton';
 import Form from './components/Form';
 import Tabs from './components/tabs';
 import Todo from './components/Todo';
+import InfiniteUsers from './components/InfiniteScrolling'
 
 
 const FILTER_MAP = {
@@ -74,7 +75,10 @@ export default function App(props) {
               <Link to="/modal">Modal</Link>
             </li>
             <li>
-              <Link to="/users">Users Again</Link>
+              <Link to="/users"></Link>
+            </li>
+            <li>
+              <Link to="/scolling">Infite Scrolling</Link>
             </li>
           </ul>
         </nav>
@@ -87,6 +91,9 @@ export default function App(props) {
           </Route>
           <Route path="/modal">
             <Dasboard />
+          </Route>
+          <Route path="/scrolling">
+            <InfiniteUsers />
           </Route>
           <Route path="/">
           <div>
