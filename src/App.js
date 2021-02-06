@@ -1,15 +1,18 @@
-import React, {useState} from "react";
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 
-import Todo from './components/Todo'
-import Form from './components/Form'
-import FilterButton from './components/FilterButton'
+
+  Link, Route, Switch
+} from "react-router-dom";
+import Dasboard from './components/Dashboard';
+import FilterButton from './components/FilterButton';
+import Form from './components/Form';
+import Tabs from './components/tabs';
+import Todo from './components/Todo';
+import InfiniteUsers from './components/InfiniteScrolling'
+
 
 const FILTER_MAP = {
   ALL: () => true,
@@ -63,16 +66,19 @@ export default function App(props) {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Tabs</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/TodoList">TodoMatic</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/modal">Modal</Link>
             </li>
             <li>
-              <Link to="/users">Users Again</Link>
+              <Link to="/users"></Link>
+            </li>
+            <li>
+              <Link to="/scolling">Infite Scrolling</Link>
             </li>
           </ul>
         </nav>
@@ -80,14 +86,30 @@ export default function App(props) {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
+          <Route path="/TodoList">
             <About task={tasks} addTask={addTask} toggleTaskCompleted={toggleTaskCompleted} deleteTask={deleteTask} editTask={editTask}/>
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/modal">
+            <Dasboard />
+          </Route>
+          <Route path="/scrolling">
+            <InfiniteUsers />
           </Route>
           <Route path="/">
-            <Home />
+          <div>
+          <h1>Tabs Demo</h1>
+            <Tabs> 
+              <div label="Gator"> 
+                See ya later, <em>Alligator</em>! 
+              </div> 
+              <div label="Croc"> 
+                After 'while, <em>Crocodile</em>! 
+              </div> 
+              <div label="Sarcosuchus"> 
+                Nothing to see here, this tab is <em>extinct</em>! 
+              </div> 
+            </Tabs> 
+          </div>
           </Route>
         </Switch>
       </div>
