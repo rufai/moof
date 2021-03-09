@@ -1,75 +1,24 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
-import Todo from './components/Todo'
-import Form from './components/Form'
-import FilterButton from './components/FilterButton'
+import Tabs from './components/tabs';
 
 export default function App(props) {
 
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
+ 
+          <div>
+          <h1>Tabs Demo</h1>
+            <Tabs> 
+              <div label="Gator"> 
+                See ya later, <em>Alligator</em>! 
+              </div> 
+              <div label="Croc"> 
+                After 'while, <em>Crocodile</em>! 
+              </div> 
+              <div label="Sarcosuchus"> 
+                Nothing to see here, this tab is <em>extinct</em>! 
+              </div> 
+            </Tabs> 
+          </div>
          
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-        
-            
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-       
-          <Route path="/">
-            <About task={props.tasks} />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About(props) {
-  const taskList = props.task.map((task) => <Todo id={task.id} name={task.name} completed={task.completed} key={task.id}/>)
-
-  return (
-    <div className="todoapp stack-large">
-      <h1>TodoMatic</h1>
-      <Form />
-    
-      <div className="filters btn-group stack-exception">
-        <FilterButton />
-        <FilterButton />
-        <FilterButton />
-      </div>
-      <h2 id="list-heading">
-        3 tasks remaining
-      </h2>
-      <ul
-        // role="list"
-        className="todo-list stack-large stack-exchange"
-        aria-labelledby="list-heading" >
-            {taskList}
-        </ul>
-    </div>
-    
-  );
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
