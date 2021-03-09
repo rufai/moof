@@ -2,8 +2,6 @@ import { nanoid } from 'nanoid';
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
-
-
   Link, Route, Switch
 } from "react-router-dom";
 import Dasboard from './components/Dashboard';
@@ -66,19 +64,19 @@ export default function App(props) {
         <nav>
           <ul>
             <li>
-              <Link to="/">Tabs</Link>
+              <Link to="/play">Tabs</Link>
             </li>
             <li>
-              <Link to="/TodoList">TodoMatic</Link>
+              <Link to="/play/TodoList">TodoMatic</Link>
             </li>
             <li>
-              <Link to="/modal">Modal</Link>
+              <Link to="/play/modal">Modal</Link>
             </li>
             <li>
-              <Link to="/users"></Link>
+              <Link to="/play/users"></Link>
             </li>
             <li>
-              <Link to="/scolling">Infite Scrolling</Link>
+              <Link to="/play/scrolling">Infite Scrolling</Link>
             </li>
           </ul>
         </nav>
